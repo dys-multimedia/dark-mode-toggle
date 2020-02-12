@@ -22,7 +22,14 @@ function App() {
     Object.entries(currentTheme).forEach(entry => {
       document.documentElement.style.setProperty(entry[0], entry[1]);
     });
+    localStorage.setItem('darkmode', darkMode);
   }, [darkMode]);
+
+  useEffect(() => {
+    if (localStorage.getItem('darkmode')) {
+      setDarkMode(true);
+    }
+  }, []);
 
   return (
     <div className="App">
